@@ -11,9 +11,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{536F7AF5-2C2
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{A26C7FE5-F026-443F-9291-2525789764B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Integration.Tests", "test\Example.Crawler.IntegrationTests\Example.Integration.Tests.csproj", "{7BFC2763-7517-4726-98AF-EDFEF003F286}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.Integration.Tests", "test\Example.Crawler.IntegrationTests\Example.Integration.Tests.csproj", "{7BFC2763-7517-4726-98AF-EDFEF003F286}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Tests", "test\Example.Tests\Example.Tests.csproj", "{10A56DBF-6E83-42AB-9E8A-54B509794817}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.Tests", "test\Example.Tests\Example.Tests.csproj", "{10A56DBF-6E83-42AB-9E8A-54B509794817}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Crawler.Akka", "src\Example.Crawler.Akka\Example.Crawler.Akka.csproj", "{A7FAB3ED-FB0A-4F60-B9AE-3A9DA9978DC2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,10 @@ Global
 		{10A56DBF-6E83-42AB-9E8A-54B509794817}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10A56DBF-6E83-42AB-9E8A-54B509794817}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10A56DBF-6E83-42AB-9E8A-54B509794817}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7FAB3ED-FB0A-4F60-B9AE-3A9DA9978DC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7FAB3ED-FB0A-4F60-B9AE-3A9DA9978DC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7FAB3ED-FB0A-4F60-B9AE-3A9DA9978DC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7FAB3ED-FB0A-4F60-B9AE-3A9DA9978DC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +52,7 @@ Global
 		{F0910BF1-88EF-4A88-8DD2-6ABD112172A3} = {536F7AF5-2C25-4544-B2FB-E86068C4369F}
 		{7BFC2763-7517-4726-98AF-EDFEF003F286} = {A26C7FE5-F026-443F-9291-2525789764B8}
 		{10A56DBF-6E83-42AB-9E8A-54B509794817} = {A26C7FE5-F026-443F-9291-2525789764B8}
+		{A7FAB3ED-FB0A-4F60-B9AE-3A9DA9978DC2} = {536F7AF5-2C25-4544-B2FB-E86068C4369F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {26013F9B-493F-4F16-9941-CA15EFEFB17E}
