@@ -10,8 +10,8 @@ namespace Example.Tests
 
         }
 
-        [Fact]
-        public void Test1()
+        [Fact(DisplayName = "Send configuration request")]
+        public void Working_WhenConfigureIsSend_ReturnsOK()
         {
 
         }
