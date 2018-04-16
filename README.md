@@ -1,4 +1,4 @@
-# Example Crawler using good technologies
+# Example Crawler using awesome technologies
 
 ## Used
 
