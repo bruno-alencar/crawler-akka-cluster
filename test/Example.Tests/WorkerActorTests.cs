@@ -13,7 +13,7 @@ namespace Example.Tests
         [Fact(DisplayName = "Send configuration request")]
         public void Working_WhenConfigureIsSend_ReturnsOK()
         {
-
+    
         }
     }
 }
