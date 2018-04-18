@@ -34,13 +34,6 @@ namespace Example.Crawler.Domain
             if (string.IsNullOrWhiteSpace(uri))
                 return "error";
 
-            //_httpClient.BaseAddress = new Uri(uri);
-
-            //_httpClient.DefaultRequestHeaders.Connection.Add("keep-alive");
-            //_httpClient.DefaultRequestHeaders.CacheControl = new CacheControlHeaderValue() { MaxAge = TimeSpan.FromSeconds(0) };
-
-            //_httpClient.CookieContainer
-
             var baseAddress = new Uri("http://example.com");
             using (var handler = new HttpClientHandler { UseCookies = false })
             using (var client = new HttpClient(handler) { BaseAddress = baseAddress })
@@ -65,21 +58,6 @@ namespace Example.Crawler.Domain
 
             try
             {
-
-    //            var baseAddress = new Uri("http://example.com");
-    //            var cookieContainer = new CookieContainer();
-    //            using (var handler = new HttpClientHandler() { CookieContainer = cookieContainer })
-    //            using (var client = new HttpClient(handler) { BaseAddress = baseAddress })
-    //            {
-    //                var content = new FormUrlEncodedContent(new[]
-    //                {
-    //    new KeyValuePair<string, string>("foo", "bar"),
-    //    new KeyValuePair<string, string>("baz", "bazinga"),
-    //});
-    //                cookieContainer.Add(baseAddress, new Cookie("CookieName", "cookie_value"));
-    //                var result = client.PostAsync("/test", content).Result;
-    //                result.EnsureSuccessStatusCode();
-    //            }
 
                 var baseAddress = new Uri(DefaultUrl);
                 using (var handler = new HttpClientHandler { UseCookies = true })
