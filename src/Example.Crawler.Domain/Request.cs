@@ -19,8 +19,8 @@ namespace Example.Crawler.Domain
 
         public Request(HttpClient httpClient = null)
         {
-            _httpClient = httpClient ?? new HttpClient();
-            _httpClient.BaseAddress = new Uri(DefaultUrl);
+            //_httpClient = httpClient ?? new HttpClient();
+            //_httpClient.BaseAddress = new Uri(DefaultUrl);
         }
 
         public async Task<string> PreRequestAsync(string uri = null)
