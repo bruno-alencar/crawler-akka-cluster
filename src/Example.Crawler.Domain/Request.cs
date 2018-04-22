@@ -13,6 +13,7 @@ namespace Example.Crawler.Domain
     {
         private HttpClient _httpClient;
         private HttpWebRequest _request;
+        private ScrapContext _scrapContext;
         private const string DefaultUrl = "http://www.tudogostoso.com.br/";
         private static readonly Encoding DefaultEncoding = System.Text.Encoding.GetEncoding("UTF-8");
 
@@ -27,40 +28,28 @@ namespace Example.Crawler.Domain
             if (string.IsNullOrWhiteSpace(uri))
                 return "error";
 
-            var baseAddress = new Uri("http://example.com");
-            using (var handler = new HttpClientHandler { UseCookies = false })
-            using (var client = new HttpClient(handler) { BaseAddress = baseAddress })
-            {
-                var message = new HttpRequestMessage(HttpMethod.Get, "/test");
-                message.Headers.Add("Cookie", "cookie1=value1; cookie2=value2");
-                var result = await client.SendAsync(message);
-                result.EnsureSuccessStatusCode();
-            }
-
-
-            return null;
-        }
-
-        public void Scrap()
-        {
-
-        }
-
-        public async Task<string> PostScrap()
-        {
-
             try
             {
-
                 var baseAddress = new Uri(DefaultUrl);
-                using (var handler = new HttpClientHandler { UseCookies = true })
-                using (var client = new HttpClient(handler) { BaseAddress = baseAddress })
+                var handler = new HttpClientHandler
                 {
-                    var message = new HttpRequestMessage(HttpMethod.Get, "/");
-                    message.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1");
-                    var result = await client.SendAsync(message);
-                    return await result.Content.ReadAsStringAsync();
-                }
+                    UseCookies = true
+                };
+
+                _httpClient = new HttpClient(handler)
+                {
+                    BaseAddress = baseAddress
+                };
+
+                var message = new HttpRequestMessage(HttpMethod.Get, "/");
+                message.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1");
+
+                _scrapContext = new ScrapContext
+                {
+                    Message = message
+                };
+
+                return "OK";
             }
             catch (Exception ex)
             {
@@ -68,21 +57,27 @@ namespace Example.Crawler.Domain
             }
         }
 
+        public async Task<string> Scrap()
+        {
+            try
+            {
+                var result = await _httpClient.SendAsync(_scrapContext.Message);
+                return await result.Content.ReadAsStringAsync();
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+
+        public async Task<string> PostScrap()
+        {
+            return "";
+        }
+
         public struct ScrapContext
         {
-            public string EventTarget;
-            public string EventArgument;
-            public string ViewState;
-            public string ViewStateGenerator;
-            public string EventValidation;
-            public string KeyWord;
-            public string AccessKey;
-            public string Captcha;
-            public string ButtonName;
-            public string Token;
-            public string CaptchaAudio;
-            public string ImageCaptchaBase64;
-
+            public HttpRequestMessage Message;
             public bool Initialized { get; internal set; }
         }
     }

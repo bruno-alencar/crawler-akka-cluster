@@ -17,7 +17,7 @@ namespace Example.Tests
 
             // Act
             //request.PreRequestAsync();
-            var result = await request.PostScrap();
+            var result = await request.Scrap();
 
             // Assert
             Assert.NotNull(result);
