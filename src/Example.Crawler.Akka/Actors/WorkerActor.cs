@@ -24,6 +24,16 @@ namespace Example.Crawler.Akka
             {
 
             });
+
+            Receive<Scrap>(job =>
+            {
+
+            });
+
+            Receive<PostScrap>(job =>
+            {
+
+            });
         }
     }
 }
