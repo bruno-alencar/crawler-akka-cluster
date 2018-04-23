@@ -6,18 +6,9 @@ namespace Example.Crawler.Domain.Common
 {
     public class Configure { }
 
-    public class SendRequest { }
-    public class SentRequestSuccessfully { }
-    public class SentRequestFailed { }
-    public class SentRequestTerminated { }
+    public class PreScrap { }
 
-    public class GetData { }
-    public class GetDataSuccessfully { }
-    public class GetDataFailed { }
-    public class GetDataTerminated { }
+    public class Scrap { }
 
-    public class Save { }
-    public class SaveSuccessfully { }
-    public class SaveFailed { }
-    public class SaveTerminated { }
-}
+    public class PostScrap { }
+}   
