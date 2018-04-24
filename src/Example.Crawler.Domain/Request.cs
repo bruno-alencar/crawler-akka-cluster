@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Example.Crawler.Domain
 {
-    public class Request
+    public class Request : ICrawlerApplicationService
     {
         private HttpClient _httpClient;
         private HttpWebRequest _request;
@@ -73,6 +73,11 @@ namespace Example.Crawler.Domain
         public async Task<string> PostScrap()
         {
             return "";
+        }
+
+        public Task<string> PreScrap()
+        {
+            throw new NotImplementedException();
         }
 
         public struct ScrapContext
