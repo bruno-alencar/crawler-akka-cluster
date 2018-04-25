@@ -1,4 +1,5 @@
 ﻿using Akka.Actor;
+using Example.Crawler.Domain;
 using Example.Crawler.Domain.Common;
 using System;
 
@@ -6,16 +7,12 @@ namespace Example.Crawler.Akka
 {
     public class WorkerActor : ReceiveActor
     {
-        public WorkerActor()
+        private ICrawlerApplicationService _applicationService;
+
+        public WorkerActor(ICrawlerApplicationService applicationService)
         {
-            // Configure Request
-
-            // Send Request
-
-            // Get Data
-
-            // Save on Database
-
+            Working();
+            _applicationService = applicationService;
         }
 
         public void Working()
