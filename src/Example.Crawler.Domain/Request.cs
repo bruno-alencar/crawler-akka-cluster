@@ -26,17 +26,17 @@ namespace Example.Crawler.Domain
         public async Task<string> PreRequestAsync(string uri = null)
         {
             if (string.IsNullOrWhiteSpace(uri))
-                return "error";
+                return "uri is null or empty";
 
             try
             {
-                var baseAddress = new Uri(DefaultUrl);
+                var baseAddress = new Uri(uri ?? DefaultUrl);
                 var handler = new HttpClientHandler
                 {
                     UseCookies = true
                 };
 
-                _httpClient = new HttpClient(handler)
+                _httpClient = _httpClient ?? new HttpClient(handler)
                 {
                     BaseAddress = baseAddress
                 };
