@@ -7,8 +7,8 @@ namespace Example.Crawler.Domain
 {
     public interface ICrawlerApplicationService
     {
-        Task<string> PreScrap();
-        Task<string> Scrap();
-        Task<string> PostScrap();
+        Task<string> PreScrapAsync();
+        Task<string> ScrapAsync();
+        Task<string> PostScrapAsync();
     }
 }

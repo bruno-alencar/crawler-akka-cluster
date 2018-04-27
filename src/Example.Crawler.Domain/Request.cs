@@ -57,7 +57,7 @@ namespace Example.Crawler.Domain
             }
         }
 
-        public async Task<string> Scrap()
+        public async Task<string> ScrapAsync()
         {
             try
             {
@@ -70,12 +70,12 @@ namespace Example.Crawler.Domain
             }
         }
 
-        public async Task<string> PostScrap()
+        public async Task<string> PostScrapAsync()
         {
             return "";
         }
 
-        public Task<string> PreScrap()
+        public Task<string> PreScrapAsync()
         {
             throw new NotImplementedException();
         }
