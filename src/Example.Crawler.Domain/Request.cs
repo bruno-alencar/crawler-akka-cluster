@@ -13,6 +13,7 @@ namespace Example.Crawler.Domain
     {
         private HttpClient _httpClient;
         private HttpWebRequest _request;
+        private HttpClientHandler _cookie;
         private ScrapContext _scrapContext;
         private const string DefaultUrl = "http://www.tudogostoso.com.br/";
         private static readonly Encoding DefaultEncoding = System.Text.Encoding.GetEncoding("UTF-8");
@@ -21,6 +22,12 @@ namespace Example.Crawler.Domain
         {
             //_httpClient = httpClient ?? new HttpClient();
             //_httpClient.BaseAddress = new Uri(DefaultUrl);
+            _cookie = new HttpClientHandler
+            {
+                UseCookies = true
+            };
+
+            _httpClient = httpClient ?? new HttpClient(_cookie);
         }
 
         public async Task<string> PreRequestAsync(string uri = null)
@@ -31,15 +38,16 @@ namespace Example.Crawler.Domain
             try
             {
                 var baseAddress = new Uri(uri ?? DefaultUrl);
-                var handler = new HttpClientHandler
-                {
-                    UseCookies = true
-                };
+                //var handler = new HttpClientHandler
+                //{
+                //    UseCookies = true
+                //};
 
-                _httpClient = _httpClient ?? new HttpClient(handler)
-                {
-                    BaseAddress = baseAddress
-                };
+                //_httpClient = _httpClient ?? new HttpClient(handler)
+                //{
+                //    BaseAddress = baseAddress
+                //};
+                _httpClient.BaseAddress = baseAddress;
 
                 var message = new HttpRequestMessage(HttpMethod.Get, "/");
                 message.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1");
