@@ -48,22 +48,24 @@ namespace Example.Tests
             //Assert.Equal("Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1", httpClient.DefaultRequestHeaders.GetValues("User-Agent").First());
         }
 
-        //[Fact]
-        //public async Task PostScrap_WhenDataIsValid_ReturnsOK()
-        //{
-        //    // Arrange
-        //    var httpClient = new HttpClient();
-        //    var uri = "http://www.tudogostoso.com.br/";
-        //    var request = new Request(httpClient: httpClient);
+        [Fact]
+        public async Task PostScrap_WhenDataIsValid_ReturnsOK()
+        {
+            // Arrange
+            var httpClient = new HttpClient();
+            var uri = "http://www.tudogostoso.com.br/";
+            var request = new Request(httpClient: httpClient);
 
-        //    // Act
-        //    var result = await request.PreRequestAsync(uri);
+            var a = request.PreRequestAsync(uri);
 
-        //    // Assert
-        //    Assert.NotNull(result);
-        //    Assert.Equal("OK", result);
-        //    Assert.Equal(uri, httpClient.BaseAddress.ToString());
-        //    Assert.Equal("Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1", httpClient.DefaultRequestHeaders.GetValues("User-Agent").First());
-        //}
+            // Act
+            var result = await request.ScrapAsync();
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal("OK", result);
+            Assert.Equal(uri, httpClient.BaseAddress.ToString());
+            Assert.Equal("Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1", httpClient.DefaultRequestHeaders.GetValues("User-Agent").First());
+        }
     }
 }
