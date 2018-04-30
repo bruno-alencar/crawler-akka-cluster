@@ -31,7 +31,7 @@ namespace Example.Tests
         }
 
         [Fact]
-        public async Task PostScrap_WhenDataIsValid_ReturnsOK()
+        public async Task PreScrap_WhenDataIsValid_ReturnsOK()
         {
             // Arrange
             var httpClient = new HttpClient();
@@ -56,7 +56,9 @@ namespace Example.Tests
             var uri = "http://www.tudogostoso.com.br/";
             var request = new Request(httpClient: httpClient);
 
-            var a = request.PreRequestAsync(uri);
+            var a = await request.PreRequestAsync(uri);
+            Assert.NotNull(a);
+            Assert.Equal("ok", a);
 
             // Act
             var result = await request.ScrapAsync();
