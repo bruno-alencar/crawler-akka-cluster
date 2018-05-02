@@ -58,10 +58,11 @@ namespace Example.Crawler.Akka
         {
 
 
-            Receive<PreScrap>(job =>
+            ReceiveAsync<PreScrap>(async job =>
             {
+                var result = await _applicationService.PreScrapAsync(job.Uri);
 
-                //var result = _applicationService.PreScrapAsync(job.Uri);
+                if (result == "OK") ;
             });
 
             Receive<PreScrap>(job =>
