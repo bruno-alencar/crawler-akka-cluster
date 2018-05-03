@@ -62,7 +62,12 @@ namespace Example.Crawler.Akka
             {
                 var result = await _applicationService.PreScrapAsync(job.Uri);
 
-                if (result == "OK") ;
+                if (result == "OK")
+                    Sender.Tell(new PreScrapSuccessfully());
+                else if (result == null)
+                    Sender.Tell(new PreScrapFailed());
+                else if (result == "error")
+                    Sender.Tell(new PreScrapTerminated());
             });
 
             Receive<PreScrap>(job =>
