@@ -83,7 +83,7 @@ namespace Example.Crawler.Domain
             return "";
         }
 
-        public Task<string> PreScrapAsync()
+        public Task<string> PreScrapAsync(string uri = null)
         {
             throw new NotImplementedException();
         }
