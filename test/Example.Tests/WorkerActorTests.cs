@@ -22,7 +22,12 @@ namespace Example.Tests
         {
             // Arrange
 
+            var html = "OK";
             var mockApplicationService = new Mock<ICrawlerApplicationService>();
+            mockApplicationService
+                .Setup(e => e.PreScrapAsync(It.IsAny<string>()))
+                .ReturnsAsync(html)
+                .Verifiable();
 
             var coordinator = Sys.ActorOf(Props.Create(() => new WorkerActor(mockApplicationService.Object)));
 
@@ -31,17 +36,13 @@ namespace Example.Tests
             // Act            
             Within(TimeSpan.FromSeconds(10), () =>
             {
-                coordinator.Tell(new PreScrap { Uri = ""});
+                coordinator.Tell(new PreScrap { Uri = "http://teste.com"});
                 result = ExpectMsg<WorkerActor.PreScrapSuccessfully>();
             });
 
             // Assert
             Assert.NotNull(result);
-            Assert.Equal(1, result.Retry);
-            //Assert.Equal(settings.Retry.TryDefineNumber, result.DefineNumber.Retry);
-
-            //Assert.NotNull(result.DefineNumber.Reasons);
-            //Assert.Empty(result.DefineNumber.Reasons);
+            //Assert.Equal(1, result.Retry);
         }
     }
 }
