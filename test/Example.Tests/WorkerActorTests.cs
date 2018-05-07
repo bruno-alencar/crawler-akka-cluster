@@ -44,5 +44,31 @@ namespace Example.Tests
             Assert.NotNull(result);
             //Assert.Equal(1, result.Retry);
         }
+
+        [Fact(DisplayName = "Send PreScrap error")]
+        public void Working_WhenConfigureIsSend_ReturnsError()
+        {
+            // Arrange
+            var mockApplicationService = new Mock<ICrawlerApplicationService>();
+            mockApplicationService
+                .Setup(e => e.PreScrapAsync(It.IsAny<string>()))
+                .ReturnsAsync(string.Empty)
+                .Verifiable();
+
+            var coordinator = Sys.ActorOf(Props.Create(() => new WorkerActor(mockApplicationService.Object)));
+
+            var result = default(WorkerActor.PreScrapFailed);
+
+            // Act            
+            Within(TimeSpan.FromSeconds(10), () =>
+            {
+                coordinator.Tell(new PreScrap { Uri = "http://teste.com" });
+                result = ExpectMsg<WorkerActor.PreScrapFailed>();
+            });
+
+            // Assert
+            Assert.NotNull(result);
+            //Assert.Equal(1, result.Retry);
+        }
     }
 }

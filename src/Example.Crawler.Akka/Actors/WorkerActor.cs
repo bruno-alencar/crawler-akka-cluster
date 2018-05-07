@@ -64,7 +64,7 @@ namespace Example.Crawler.Akka
 
                 if (result == "OK")
                     Sender.Tell(new PreScrapSuccessfully());
-                else if (result == null)
+                else if (string.IsNullOrEmpty(result))
                     Sender.Tell(new PreScrapFailed());
                 else if (result == "error")
                     Sender.Tell(new PreScrapTerminated());
