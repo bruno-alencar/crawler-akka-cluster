@@ -56,8 +56,6 @@ namespace Example.Crawler.Akka
 
         public void Working()
         {
-
-
             ReceiveAsync<PreScrap>(async job =>
             {
                 var result = await _applicationService.PreScrapAsync(job.Uri);
@@ -68,11 +66,6 @@ namespace Example.Crawler.Akka
                     Sender.Tell(new PreScrapFailed());
                 else if (result == "error")
                     Sender.Tell(new PreScrapTerminated());
-            });
-
-            Receive<PreScrap>(job =>
-            {
-
             });
 
             Receive<Scrap>(job =>

@@ -17,7 +17,7 @@ namespace Example.Tests
 
         }
 
-        [Fact(DisplayName = "Send PreScrap")]
+        [Fact(DisplayName = "Send PreScrap when data is valid")]
         public void Working_WhenConfigureIsSend_ReturnsOK()
         {
             // Arrange
@@ -45,7 +45,7 @@ namespace Example.Tests
             //Assert.Equal(1, result.Retry);
         }
 
-        [Fact(DisplayName = "Send PreScrap failed")]
+        [Fact(DisplayName = "Send PreScrap when failed")]
         public void Working_WhenConfigureIsSend_ReturnsFailed()
         {
             // Arrange
@@ -71,7 +71,7 @@ namespace Example.Tests
             //Assert.Equal(1, result.Retry);
         }
 
-        [Fact(DisplayName = "Send PreScrap error")]
+        [Fact(DisplayName = "Send PreScrap terminated")]
         public void Working_WhenConfigureIsSend_ReturnsTerminated()
         {
             // Arrange
