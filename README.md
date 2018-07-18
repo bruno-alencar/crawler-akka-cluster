@@ -14,3 +14,5 @@
 
 > `dotnet run`
 
+## Run tests
+> `dotnet test`
