@@ -21,7 +21,6 @@ namespace Example.Tests
         public void Working_WhenConfigureIsSend_ReturnsOK()
         {
             // Arrange
-
             var html = "OK";
             var mockApplicationService = new Mock<ICrawlerApplicationService>();
             mockApplicationService
@@ -42,7 +41,7 @@ namespace Example.Tests
 
             // Assert
             Assert.NotNull(result);
-            //Assert.Equal(1, result.Retry);
+            Assert.Equal(1, result.Retry);
         }
 
         [Fact(DisplayName = "Send PreScrap when failed")]
